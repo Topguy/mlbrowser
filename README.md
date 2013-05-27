@@ -40,6 +40,7 @@ You can add this package to your own fork of buildroot by adding the Config.in a
 				DEFINES+=_BROWSER_ \
 				DEFINES+=_MOUSE_ \
 				DEFINES+=_PROPERTYCHANGER_ \
+				./src/mlbrowser.pro \
 		)
 	endef
 
