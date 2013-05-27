@@ -21,9 +21,9 @@ You can add this package to your own fork of buildroot by adding the Config.in a
 	#
 	#############################################################
 
-	MLBROWSER_VERSION = 1.1.0
-	MLBROWSER_SITE_METHOD = local
-	MLBROWSER_SITE = $(TOPDIR)/package/mlbrowser/src
+	MLBROWSER_VERSION = b25644fe894613177c1b9bc81bd63e775780b5a8
+	MLBROWSER_SITE_METHOD = git
+	MLBROWSER_SITE = https://github.com/msieben/mlbrowser.git
 
 	ifeq ($(BR2_PACKAGE_QT5WEBKIT),y)
 	MLBROWSER_DEPENDENCIES = qt5webkit
