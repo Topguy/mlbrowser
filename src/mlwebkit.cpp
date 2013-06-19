@@ -97,9 +97,6 @@ MLWebKit::MLWebKit()
 
 	pWebview = new GraphicsWebView();
 
-#ifdef QT_OPENGL_LIB
-	pWidget = new QGLWidget();
-#endif
 	pPage =  new WebPage();
 
 	pFrame = pPage->mainFrame();
@@ -115,6 +112,7 @@ MLWebKit::MLWebKit()
 	}
 
 #ifdef QT_OPENGL_LIB
+//	pWidget = new QGLWidget();
 	pWidget = new QGLWidget(pView);
 #endif
 
