@@ -87,7 +87,7 @@ int main(int argc, char * argv[])
 	qInstallMessageHandler ( MessageHandler );
 #endif
 
-	qDebug () << "METROLOGICAL : browser release (" << _BUILD_DATE_ << _BUILD_TIME_ <<")";
+	qDebug () << "browser release (" << _BUILD_DATE_ << _BUILD_TIME_ <<")";
 
 #ifdef _PLAYER_
         Player player(NULL);
@@ -99,14 +99,14 @@ int main(int argc, char * argv[])
 
 //REMARK: order of filters is important; last installed -> receives first
 #ifdef _EVENTMONITORING_
-        qDebug () << "METROLOGICAL : enable event monitoring";
+        qDebug () << "enable event monitoring";
 	EventListener eventlistener;
 
 	app.installEventFilter ( &eventlistener );
 #endif
 
 #ifdef _KEYFILTER_
-	qDebug () << "METROLOGICAL : add keyboard filter";
+	qDebug () << "add keyboard filter";
 	KeyFilter keyfilter;
 
 	app.installEventFilter ( &keyfilter );
@@ -121,23 +121,23 @@ int main(int argc, char * argv[])
                 url = QUrl("");
 
 #ifndef _MOUSE_
-        qDebug () << "METROLOGICAL : hide mouse pointer";
+        qDebug () << "hide mouse pointer";
 	QApplication::setOverrideCursor ( QCursor ( Qt::BlankCursor ) );
 #endif
 
         MLWebKit* browser = new MLWebKit();
 
 #ifdef _PLAYER_
-        qDebug () << "METROLOGICAL : add player";
+        qDebug () << "add player";
 	browser->attach_object(&player, "player");
 #endif
 
 #ifdef _PROPERTYCHANGER_
-	qDebug () << "METROLOGICAL : add propertychanger"; 
+	qDebug () << "add propertychanger"; 
 	browser->attach_object(&propertychanger, "propertychanger");
 #endif
 
-	qDebug () << "METROLOGICAL : load and show page";
+	qDebug () << "load and show page";
 
         browser->load(url);
         browser->show();

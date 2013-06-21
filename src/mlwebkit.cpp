@@ -25,7 +25,7 @@ protected:
 	void contextMenuEvent(QGraphicsSceneContextMenuEvent* ev)
 	{
 
-		qDebug () << "METROLOGICAL : received a context event";
+		qDebug () << "received a context event";
 
 		if ( ev != NULL )
 			ev->ignore();	
@@ -66,7 +66,7 @@ protected:
 	{
 		Q_UNUSED(url);
 
-		qDebug () << "METROLOGICAL : user agent : " << "mlwebkit/1.0";
+		qDebug () << "user agent : " << "mlwebkit/1.0";
 		return QString("mlwebkit/1.0");
 	}
 */
@@ -107,7 +107,7 @@ MLWebKit::MLWebKit()
 
 	if ( pScene == NULL || pView == NULL || pWebview == NULL || pPage == NULL || pFrame == NULL || pApp == NULL || pDesktop == NULL )
 	{
-		qDebug () << "METROLOGICAL : unable to construct browser (elements)";
+		qDebug () << "unable to construct browser (elements)";
 		return;
 	}
 
@@ -155,7 +155,7 @@ MLWebKit::MLWebKit()
 
 	pApp->setPalette(palette);
 
-	qDebug () << "METROLOGICAL : geometry : " << pDesktop->screenGeometry().size();
+	qDebug () << "geometry : " << pDesktop->screenGeometry().size();
 
 	// Proper (re)sizing, full screen
 
@@ -210,7 +210,7 @@ MLWebKit::MLWebKit()
 
 MLWebKit::~MLWebKit()
 {
-	qDebug () << "METROLOGICAL : clean up browser (elements)";
+	qDebug () << "clean up browser (elements)";
 
 /*
 	if (pInspector != NULL)
@@ -232,7 +232,7 @@ MLWebKit::~MLWebKit()
 
 void MLWebKit::load(QUrl url)
 {
-	qDebug () << "METROLOGICAL : load ( url ) : " << url;
+	qDebug () << "load ( url ) : " << url;
 
 	if (pWebview != NULL)
 		pWebview->load(url);
@@ -240,7 +240,7 @@ void MLWebKit::load(QUrl url)
 
 void MLWebKit::show()
 {
-	qDebug () << "METROLOGICAL : show ()";
+	qDebug () << "show ()";
 
 	if (pView != NULL)
 		pView->show();
@@ -248,7 +248,7 @@ void MLWebKit::show()
 
 void MLWebKit::hide()
 {
-	qDebug () << "METROLOGICAL : hide ()";
+	qDebug () << "hide ()";
 
 	if (pView != NULL)
 		pView->hide();
@@ -258,16 +258,16 @@ void MLWebKit::hide()
 #if defined (_PLAYER_) || defined (_PROPERTYCHANGER_)
 void MLWebKit::attach_object(QObject* _pObject_, QString _name_)
 {
-	qDebug () << "METROLOGICAL : attach_player()";
+	qDebug () << "attach_player()";
 
 	if ( pFrame != NULL)
 	{	
 		pObject = _pObject_;
 
-		qDebug () << "METROLOGICAL : change (NULL) parent to pFrame";
+		qDebug () << "change (NULL) parent to pFrame";
 		pObject->setParent(pFrame);
 
-		qDebug () << "METROLOGICAL : add webkit bridge for object " << pObject;
+		qDebug () << "add webkit bridge for object " << pObject;
 //TODO: connect to slot to keep the object accessible when page has changed
 		pFrame->addToJavaScriptWindowObject(_name_, pObject);
 
@@ -279,14 +279,14 @@ void MLWebKit::attach_object(QObject* _pObject_, QString _name_)
 #ifdef _INSPECTOR_
 void MLWebKit::inspector()
 {
-	qDebug () << "METROLOGICAL : toggle web inspector";
+	qDebug () << "toggle web inspector";
 
 	if(pInspector != NULL && pWebview != NULL)
 	{
  
  		if ( pInspector->isVisible() == false )
  		{
-			qDebug () << "METROLOGICAL : show webinspector";
+			qDebug () << "show webinspector";
 
 			pWebview->hide();
 			pWebview->setEnabled(false);
@@ -295,7 +295,7 @@ void MLWebKit::inspector()
  		}
  		else
  		{
-			qDebug () << "METROLOGICAL : hide webinspector";
+			qDebug () << "hide webinspector";
 
  			pProxyWidget->hide();
 			pProxyWidget->setEnabled(false);
@@ -304,6 +304,6 @@ void MLWebKit::inspector()
  		}
  	}
 	else
-		qDebug () << "METROLOGICAL : some elements do not exist";
+		qDebug () << "some elements do not exist";
 }
 #endif

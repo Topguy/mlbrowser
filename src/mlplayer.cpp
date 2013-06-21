@@ -6,7 +6,7 @@ Player::Player(QObject* object)
 {
 	Q_UNUSED(object);
 
-	qDebug () << "METROLOGICAL : create player";
+	qDebug () << "create player";
 
 	gst_init ( NULL, NULL );
 //	gst_init ( &argc, &argv );
@@ -14,7 +14,7 @@ Player::Player(QObject* object)
 
 bool Player::load(QString _url_)
 {
-	qDebug () << "METROLOGICAL : load url : " << _url_;
+	qDebug () << "load url : " << _url_;
 
 	url.clear();
 	url = _url_;
@@ -30,7 +30,7 @@ bool Player::load(QString _url_)
 
 	if ( pbin == NULL )
 	{
-		qDebug () << "METROLOGICAL : cannot create pipeline (elements)";
+		qDebug () << "cannot create pipeline (elements)";
 		return false;
 	}
 
@@ -44,11 +44,11 @@ bool Player::load(QString _url_)
 
 bool Player::start(void)
 {
-	qDebug () << "METROLOGICAL : start playback";
+	qDebug () << "start playback";
  
 	if ( pbin == NULL )
 	{
-		qDebug () << "METROLOGICAL : cannot start playback";
+		qDebug () << "cannot start playback";
 		return false;
 	}
 
@@ -60,11 +60,11 @@ bool Player::start(void)
 
 bool Player::pause(void)
 {
-	qDebug () << "METROLOGICAL : pause playback";
+	qDebug () << "pause playback";
 
 	if ( pbin == NULL )
 	{
-		qDebug () << "METROLOGICAL : cannot pause playback";
+		qDebug () << "cannot pause playback";
 		return false;
 	}
 
@@ -76,11 +76,11 @@ bool Player::pause(void)
 
 bool Player::resume(void)
 {
-	qDebug () << "METROLOGICAL : resume playback";
+	qDebug () << "resume playback";
 
 	if ( pbin == NULL )
 	{
-		qDebug () << "METROLOGICAL : cannot cannot resume playback";
+		qDebug () << "cannot cannot resume playback";
 		return false;
 	}
 
@@ -92,10 +92,10 @@ bool Player::resume(void)
 
 bool Player::stop(void)
 {
-	qDebug () << "METROLOGICAL : stop playback";
+	qDebug () << "stop playback";
 
 	if ( pbin == NULL )
-		qDebug () << "METROLOGICAL : cannot stop playback";
+		qDebug () << "cannot stop playback";
 		return false;
 
 //TODO: check return value
@@ -109,7 +109,7 @@ bool Player::stop(void)
 
 bool Player::quit(void)
 {
-	qDebug () << "METROLOGICAL : quit player";
+	qDebug () << "quit player";
 
 	stop();
 

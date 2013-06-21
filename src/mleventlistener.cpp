@@ -12,7 +12,7 @@ bool EventListener::eventFilter(QObject* pObject, QEvent* pEvent)
 		case QEvent::UpdateLater	: // 78	The widget should be queued to be repainted at a later time.
 		case QEvent::UpdateRequest	: // 77	The widget should be repainted.
 		{
-			qDebug () << "METROLOGICAL : QObject : " << pObject << " : event type : " << pEvent->type();
+			qDebug () << "QObject : " << pObject << " : event type : " << pEvent->type();
 		}
 		default :;
 	}
