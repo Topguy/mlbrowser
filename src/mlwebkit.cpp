@@ -125,7 +125,7 @@ MLWebKit::MLWebKit()
 
 #ifdef QT_OPENGL_LIB
 //	pView->setViewport(pWidget);
-	pView->setViewport(t(new QGLWidget(QGL::DirectRendering | QGL::DoubleBuffer));
+	pView->setViewport((new QGLWidget(QGL::DirectRendering | QGL::DoubleBuffer));
 #endif
 
 	// Configuration, settings and alike
