@@ -123,11 +123,6 @@ MLWebKit::MLWebKit()
 	pInspector->resize(QApplication::desktop()->screenGeometry().size());
 #endif
 
-#ifdef QT_OPENGL_LIB
-//	pView->setViewport(pWidget);
-	pView->setViewport(new QGLWidget(QGL::DirectRendering | QGL::DoubleBuffer));
-#endif
-
 	// Configuration, settings and alike
 //	pScene->setItemIndexMethod( QGraphicsScene::NoIndex);
 //	pView->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
@@ -194,6 +189,11 @@ MLWebKit::MLWebKit()
 */
 
 	// Finalize
+#ifdef QT_OPENGL_LIB
+//	pView->setViewport(pWidget);
+	pView->setViewport(new QGLWidget(QGL::DirectRendering | QGL::DoubleBuffer));
+#endif
+
 	pScene->addItem(pWebview);
 
 #ifdef _INSPECTOR_
