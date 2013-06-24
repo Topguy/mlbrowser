@@ -112,18 +112,20 @@ MLWebKit::MLWebKit()
 	}
 
 #ifdef QT_OPENGL_LIB
+	pWidget = NULL;
 //	pWidget = new QGLWidget();
-	pWidget = new QGLWidget(pView);
+//	pWidget = new QGLWidget(pView);
 #endif
 
 #ifdef _INSPECTOR_
 	pInspector = new QWebInspector;
 	pInspector->setPage(pPage);
-        pInspector->resize(QApplication::desktop()->screenGeometry().size());
+	pInspector->resize(QApplication::desktop()->screenGeometry().size());
 #endif
 
 #ifdef QT_OPENGL_LIB
-	pView->setViewport(pWidget);
+//	pView->setViewport(pWidget);
+	pView->setViewport(t(new QGLWidget(QGL::DirectRendering | QGL::DoubleBuffer));
 #endif
 
 	// Configuration, settings and alike
