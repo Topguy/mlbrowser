@@ -6,7 +6,7 @@
 class KeyFilter : public QObject
 {
 protected:
-	bool eventFilter(QObject* pObject, QEvent* pEvent);
-}; 
+    bool eventFilter(QObject* pObject, QEvent* pEvent);
+};
 
 #endif

@@ -19,39 +19,39 @@
 class MLWebKit
 {
 public:
-	MLWebKit();
-	~MLWebKit();
+    MLWebKit(int overscanw=0, int overscanh=0, qreal zoom=1.0);
+    ~MLWebKit();
 
-	void load(QUrl url);
-	void show();
-	void hide();
+    void load(QUrl url);
+    void show();
+    void hide();
 
 #if defined (_PLAYER_) || defined (_PROPERTYCHANGER_)
-	void attach_object(QObject* pObject, QString _name_);
+    void attach_object(QObject* pObject, QString _name_);
 #endif
 
 #ifdef _INSPECTOR_
-	static MLWebKit* instance();
-	void inspector();
+    static MLWebKit* instance();
+    void inspector();
 #endif
 
 private:
-	QGraphicsView*		pView;
-	QGraphicsScene*		pScene;
-	QGraphicsWebView*	pWebview;
-	QWebPage*		pPage;
-	QWebFrame*		pFrame;
+    QGraphicsView*		pView;
+    QGraphicsScene*		pScene;
+    QGraphicsWebView*	pWebview;
+    QWebPage*		pPage;
+    QWebFrame*		pFrame;
 
-	QObject*		pObject;
+    QObject*		pObject;
 
 #ifdef QT_OPENGL_LIB
-	QGLWidget*		pWidget; // viewport
+    QGLWidget*		pWidget; // viewport
 #endif
 
 #ifdef _INSPECTOR_
-	static MLWebKit*	pWebKit;
-	QWebInspector*		pInspector;
-	QGraphicsProxyWidget*	pProxyWidget;
+    static MLWebKit*	pWebKit;
+    QWebInspector*		pInspector;
+    QGraphicsProxyWidget*	pProxyWidget;
 #endif
 };
 #endif
