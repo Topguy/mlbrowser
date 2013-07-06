@@ -1,3 +1,82 @@
+mlbrowser for Rasbian
+=====================
+
+This fork contains fixes and adjustments so that the browser can be compiled and run on a standard Rasbian installation.
+In addition to Raspbian it also needs the prebuilt Qt5 packages from http://twolife.be/raspbian ,
+
+
+HOW-TO:
+
+*Start with.*
+
+Raspbian installed from image or NOOBS.
+
+*Add the twolife.be repository to you software sources:*
+
+	sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 2578B775
+	sudo bash -c "echo \"deb http://twolife.be/raspbian/ wheezy main qt gstreamer\" > /etc/apt/sources.list.d/twolife.list
+
+(You might still get warnings about non-authenticated packages, havent looked into it.)
+
+*Update and upgrade:*
+
+	sudo apt-get update
+	sudo apt-get upgrade
+
+*Install minimal Qt5 requirements and make Qt5 default Qt environment.*
+
+	sudo apt-get install libqt5webkit5-dev qtdeclarative5-dev qt5-default
+
+
+*Checkout source:*
+
+	git clone https:/h/github.com/Topguy/mlbrowser.git
+	cd mlbrowser
+
+*Configure build*
+
+	mkdir build
+	cd build
+	qmake DEFINES+=_BROWSER_ DEFINES+=_MOUSE_ DEFINES+=_PROPERTYCHANGER_ ../src/mlbrowser.pro
+
+*build*
+
+	make
+
+NOTE!!! It will now fail to link with a list of libraries it can't find. 
+It doesnt really need those libraries, so as a hack you replace the line starting with "LIBS" in the Makefile with this line:
+
+*LIBS*
+
+	LIBS = $(SUBLIBS) -L/opt/vc/lib -lQt5WebKitWidgets -pthread -lrt -L/usr/lib/arm-linux-gnueabihf -lQt5Sql -lQt5Quick -lQt5OpenGL -lQt5PrintSupport -lQt5WebKit -lQt5Qml -lQt5Widgets -lQt5Network -lQt5Gui -lQt5Core -lGLESv2 -lpthread
+
+*then rerun make*
+
+	make
+
+
+And now it should link properly.
+
+*Test it:*
+
+	./mlbrowser -platform eglfs http://www.raspberrypi.org
+
+
+*Install it:*
+
+	sudo make install
+
+*View local html-file:*
+
+	mlbrowser -platform eglfs file:///home/pi/mlbrowser/start.html
+
+Adding this to /etc/rc.local will cause yout Pi to boot directly into the browser on each boot.
+( You'll have to use /usr/local/bin/mlbroswer actually )
+
+
+
+
+
 mlbrowser
 =========
 
