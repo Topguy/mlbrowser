@@ -6,6 +6,7 @@ In addition to Raspbian it also needs the prebuilt Qt5 packages from http://twol
 
 
 HOW-TO:
+-------
 
 *Start with.*
 
@@ -73,12 +74,20 @@ And now it should link properly.
 Adding this to /etc/rc.local will cause yout Pi to boot directly into the browser on each boot.
 ( You'll have to use /usr/local/bin/mlbroswer actually )
 
+New program options
+-------------------
+ -x or -w adjusts horizontal overscan.
+ 
+ -y or -h adjusts vertical overscan.
+ 
+ -z adjusts zoom-factor (something like 1.3 to 1.6 looks nice on my TV)
 
-
+	mlbrowser -platform eglfs -x 92 -y 48 -z 1.3 http://www.google.com
 
 
 mlbrowser
 =========
+(original readme)
 
 This is the respository for the mlbrowser that has been developed by Metrological. It can be used with the buildroot fork at https://github.com/albertd/buildroot-rpi or its fork https://github.com/msieben/buildroot-rpi.git.
 
