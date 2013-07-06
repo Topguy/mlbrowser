@@ -145,19 +145,30 @@ MLWebKit::MLWebKit()
 	palette.setBrush(QPalette::Active, QPalette::Base, Qt::SolidPattern);
 	palette.setBrush(QPalette::Inactive, QPalette::Window, Qt::SolidPattern);
 	palette.setBrush(QPalette::Inactive, QPalette::Base, Qt::SolidPattern);
-	palette.setColor(QPalette::Active, QPalette::Window, QColor(0, 0, 0, 0));
-	palette.setColor(QPalette::Active, QPalette::Base, QColor(0, 0, 0, 0));
-	palette.setColor(QPalette::Inactive, QPalette::Window, QColor(0, 0, 0, 0));
-	palette.setColor(QPalette::Inactive, QPalette::Base, QColor(0, 0, 0, 0));
+	palette.setColor(QPalette::Active, QPalette::Window, QColor(0, 0, 0x80, 255));
+// Dont want horrid red color, change this.
+	palette.setColor(QPalette::Active, QPalette::Base, QColor(0xC0, 0xc0, 0xc0, 255));
+	palette.setColor(QPalette::Inactive, QPalette::Window, QColor(0, 0, 0, 255));
+	palette.setColor(QPalette::Inactive, QPalette::Base, QColor(0, 0, 0, 255));
 
 	pApp->setPalette(palette);
 
-	qDebug () << "geometry : " << pDesktop->screenGeometry().size();
-
-	// Proper (re)sizing, full screen
 
 //TODO: implement check
-	pWebview->resize(QApplication::desktop()->screenGeometry().size());
+	QSizeF screenSize = pDesktop->screenGeometry().size();
+	qDebug () << "geometry : " << screenSize;
+        //screenSize.scale(0.95,0.95, Qt::KeepAspectRatio); 
+
+// TODO: OVERSCAN 
+	screenSize.rheight() -= 48;
+	screenSize.rwidth() -= 96;
+
+	qDebug () << "scaled geometry : " << screenSize;
+	// Proper (re)sizing, full screen
+
+	//pWebview->resize(QApplication::desktop()->screenGeometry().size());
+	pWebview->resize(screenSize);
+
 	pWebview->setPage(pPage);
 
 	// Set the keyboard and mouse focus
@@ -178,7 +189,7 @@ MLWebKit::MLWebKit()
 	pSettings->setAttribute(QWebSettings::LocalContentCanAccessFileUrls, true);
 //	pSettings->setAttribute(QWebSettings::FrameFlatteningEnabled, true);
 	pSettings->setAttribute(QWebSettings::LocalStorageEnabled, true);
-	pSettings->setAttribute(QWebSettings::WebSecurityEnabled, false);
+//	pSettings->setAttribute(QWebSettings::WebSecurityEnabled, false);
 	pSettings->setAttribute(QWebSettings::SpatialNavigationEnabled, false);
 
 	// Overrule the cache settings
@@ -206,6 +217,8 @@ MLWebKit::MLWebKit()
 //	pInspector->hide();
 	pProxyWidget->hide();
 #endif
+	pWebview->setZoomFactor(1.5);
+	//pWebview->setTextSizeMultiplier(3.0);
 
 	pWebview->show();
 }

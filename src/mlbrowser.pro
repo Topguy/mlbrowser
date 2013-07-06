@@ -12,6 +12,9 @@ contains(QT_MAJOR_VERSION, 4) {
 }
 
 TARGET = mlbrowser
+target.path = /usr/local/bin
+INSTALLS += target
+
 HEADERS = mlwebkit.h
 
 SOURCES = \
@@ -42,3 +45,4 @@ contains(DEFINES, _PLAYER_) {
 		PKGCONFIG += gstreamer-0.10
 	}
 }
+

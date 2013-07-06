@@ -30,7 +30,7 @@ Raspbian installed from image or NOOBS.
 
 *Checkout source:*
 
-	git clone https:/h/github.com/Topguy/mlbrowser.git
+	git clone https:/github.com/Topguy/mlbrowser.git
 	cd mlbrowser
 
 *Configure build*
