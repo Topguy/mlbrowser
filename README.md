@@ -30,7 +30,7 @@ Raspbian installed from image or NOOBS.
 
 *Checkout source:*
 
-	git clone https:/github.com/Topguy/mlbrowser.git
+	git clone https://github.com/Topguy/mlbrowser.git
 	cd mlbrowser
 
 *Configure build*
@@ -43,7 +43,7 @@ Raspbian installed from image or NOOBS.
 
 	make
 
-NOTE!!! It will now fail to link with a list of libraries it can't find. 
+_NOTE!!!_ It will now fail to link with a list of libraries it can't find. 
 It doesnt really need those libraries, so as a hack you replace the line starting with "LIBS" in the Makefile with this line:
 
 *LIBS*
