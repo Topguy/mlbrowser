@@ -26,7 +26,7 @@ Raspbian installed from image or NOOBS.
 
 *Install minimal Qt5 requirements and make Qt5 default Qt environment.*
 
-	sudo apt-get install libqt5webkit5-dev qtdeclarative5-dev qt5-default
+	sudo apt-get install libqt5webkit5-dev qtdeclarative5-dev qt5-default qt5-qmake
 
 
 *Checkout source:*
@@ -71,8 +71,6 @@ And now it should link properly.
 
 	mlbrowser -platform eglfs file:///home/pi/mlbrowser/start.html
 
-Adding this to /etc/rc.local will cause yout Pi to boot directly into the browser on each boot.
-( You'll have to use /usr/local/bin/mlbroswer actually )
 
 New program options
 -------------------
@@ -83,6 +81,20 @@ New program options
  -z adjusts zoom-factor (something like 1.3 to 1.6 looks nice on my TV)
 
 	mlbrowser -platform eglfs -x 92 -y 48 -z 1.3 http://www.google.com
+
+### TIP No.1:
+
+If you add mlbrowser to /etc/rc.local it will cause yout Pi to boot directly into the browser on each boot.
+But you'll have to use the full path to the binary.
+
+	/usr/local/bin/mlbrowser -platform eglfs http://www.google.com
+
+
+### TIP No.2:
+
+Adding this to a script or your .profile file make sure that you dont have to write "-platform eglfs" every time.
+
+	export QT_QPA_PLATFORM=eglfs
 
 
 mlbrowser
