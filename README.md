@@ -4,6 +4,9 @@ mlbrowser for Rasbian
 This fork contains fixes and adjustments so that the browser can be compiled and run on a standard Rasbian installation.
 In addition to Raspbian it also needs the prebuilt Qt5 packages from http://twolife.be/raspbian ,
 
+In Addition to the fork from @Topguy this fork does contain some minimal adjustments to allow the the browser to be
+displayed rotated for portrait mode displays. Furthermore the Mousecursor can be hidden.
+
 
 HOW-TO:
 -------
@@ -81,6 +84,13 @@ New program options
  -z adjusts zoom-factor (something like 1.3 to 1.6 looks nice on my TV)
 
 	mlbrowser -platform eglfs -x 92 -y 48 -z 1.3 http://www.google.com
+
+ -r sets rotation mode
+    1: rotate 90 degrees clockwise
+    2: rotate 180 degrees clockwise
+    3: rotate 270 degrees clockwise (aka. 90 degrees counterclockwise)
+
+ -m hide the mouse cursor
 
 ### TIP No.1:
 
