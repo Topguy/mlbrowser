@@ -19,7 +19,7 @@
 class MLWebKit
 {
 public:
-    MLWebKit(int overscanw=0, int overscanh=0, qreal zoom=1.0);
+    MLWebKit(int overscanw=0, int overscanh=0, qreal zoom=1.0, int rotationMode=0);
     ~MLWebKit();
 
     void load(QUrl url);
