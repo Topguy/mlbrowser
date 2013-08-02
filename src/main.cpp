@@ -127,6 +127,9 @@ int main(int argc, char * argv[])
     qreal zoom=1.3;
     int a;
 
+    int rotationMode = 0;
+    bool hiddenCursor = false;
+
     if (argc > 1)
     {
         for(a=1; a<argc; a++)
@@ -144,6 +147,12 @@ int main(int argc, char * argv[])
                 case 'z':
                     zoom = QString(argv[++a]).toDouble();
                     break;
+                case 'r':
+                    rotationMode = QString(argv[++a]).toInt();
+                    break;
+                case 'm':
+                    hiddenCursor = true;
+                    break;
                 default:
                     qDebug() << "Unknown option.";
                 }
@@ -152,12 +161,16 @@ int main(int argc, char * argv[])
             }
         }
     }
-#ifndef _MOUSE_
-    qDebug () << "hide mouse pointer";
-    QApplication::setOverrideCursor ( QCursor ( Qt::BlankCursor ) );
+#ifdef _MOUSE_
+    if (hiddenCursor == true) {
+#endif
+        qDebug () << "hide mouse pointer";
+        QApplication::setOverrideCursor ( QCursor ( Qt::BlankCursor ) );
+#ifdef _MOUSE_
+    }
 #endif
 
-    MLWebKit* browser = new MLWebKit(oscanw,oscanh,zoom);
+    MLWebKit* browser = new MLWebKit(oscanw, oscanh, zoom, rotationMode);
 
 #ifdef _PLAYER_
     qDebug () << "add player";

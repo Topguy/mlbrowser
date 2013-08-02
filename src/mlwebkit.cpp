@@ -81,7 +81,7 @@ MLWebKit* MLWebKit::instance()
 }
 #endif
 
-MLWebKit::MLWebKit(int overscanw, int overscanh, qreal zoom)
+MLWebKit::MLWebKit(int overscanw, int overscanh, qreal zoom, int rotationMode)
 {
 #ifdef _INSPECTOR_
     pWebKit = this;
@@ -110,6 +110,9 @@ MLWebKit::MLWebKit(int overscanw, int overscanh, qreal zoom)
         qDebug () << "unable to construct browser (elements)";
         return;
     }
+
+    // Rotate View according to rotationMode
+    pView->rotate(90*rotationMode);
 
 #ifdef QT_OPENGL_LIB
     pWidget = NULL;
@@ -157,17 +160,28 @@ MLWebKit::MLWebKit(int overscanw, int overscanh, qreal zoom)
 //TODO: implement check
     QSizeF screenSize = pDesktop->screenGeometry().size();
     qDebug () << "screen geometry : " << screenSize;
-    //screenSize.scale(0.95,0.95, Qt::KeepAspectRatio);
 
-// Adjust screensize for screens with overscan
-    screenSize.rheight() -= overscanh;
-    screenSize.rwidth() -= overscanw;
+    QSizeF displaySize;
+    switch (rotationMode) {
+        break;
+        case 1:
+        case 3:
+            displaySize = QSizeF(
+                screenSize.height() - overscanw,
+                screenSize.width() - overscanh
+            );
+        break;
+        case 0:
+        case 2:
+        default:
+            displaySize = QSizeF(
+                screenSize.width() - overscanw,
+                screenSize.height() - overscanh
+            );
+    }
+    qDebug () << "display geometry : " << displaySize;
 
-    qDebug () << "webkit geometry : " << screenSize;
-    // Proper (re)sizing, full screen
-
-    //pWebview->resize(QApplication::desktop()->screenGeometry().size());
-    pWebview->resize(screenSize);
+    pWebview->resize(displaySize);
     pWebview->setPage(pPage);
 
     // Set the keyboard and mouse focus
