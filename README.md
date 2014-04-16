@@ -1,9 +1,3 @@
-NOTE !
-------
-
-These instructions has not been updated to match current version of packages at twolife.be. And the code has not been updated to work with Qt5.2, so right now this project is non-functional.
-
-
 
 mlbrowser for Rasbian
 =====================
@@ -25,7 +19,7 @@ Raspbian installed from image or NOOBS.
 *Add the twolife.be repository to you software sources:*
 
 	sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 2578B775
-	sudo bash -c "echo \"deb http://twolife.be/raspbian/ wheezy main qt gstreamer\" > /etc/apt/sources.list.d/twolife.list
+	sudo bash -c "echo \"deb http://twolife.be/raspbian/ wheezy main backports\" > /etc/apt/sources.list.d/twolife.list
 
 (You might still get warnings about non-authenticated packages, havent looked into it.)
 
