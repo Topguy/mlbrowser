@@ -1,3 +1,10 @@
+NOTE !
+------
+
+These instructions has not been updated to match current version of packages at twolife.be. And the code has not been updated to work with Qt5.2, so right now this project is non-functional.
+
+
+
 mlbrowser for Rasbian
 =====================
 
