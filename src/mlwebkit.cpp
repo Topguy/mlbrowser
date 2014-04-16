@@ -14,6 +14,11 @@
 #include "mlplayer.h"
 #endif
 
+
+#ifdef QT_OPENGL_LIB
+#undef QT_OPENGL_LIB
+#endif
+
 class GraphicsWebView : public QGraphicsWebView
 {
 public:
