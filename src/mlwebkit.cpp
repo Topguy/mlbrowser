@@ -3,6 +3,7 @@
 #include <QDesktopWidget>
 #include <QDebug>
 #include <QApplication>
+#include <QWebFrame>
 
 #include "mlwebkit.h"
 
@@ -105,6 +106,9 @@ MLWebKit::MLWebKit(int overscanw, int overscanh, qreal zoom, int rotationMode)
     pPage =  new WebPage();
 
     pFrame = pPage->mainFrame();
+
+    pFrame->setScrollBarPolicy( Qt::Vertical, Qt::ScrollBarAlwaysOff );
+    pFrame->setScrollBarPolicy( Qt::Horizontal, Qt::ScrollBarAlwaysOff );
 
     QApplication* pApp = (QApplication *)QApplication::instance();
 
