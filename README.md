@@ -59,6 +59,11 @@ It doesnt really need those libraries, so as a hack you replace the line startin
 
 	make
 
+_NOTE!!!_ If you get a not found warning for libGLESv2.so.2 and libEGL.so.1, create the following symlinks:
+
+	sudo ln -fs /opt/vc/lib/libEGL.so /usr/lib/arm-linux-gnueabihf/libEGL.so.1
+	sudo ln -fs /opt/vc/lib/libGLESv2.so /usr/lib/arm-linux-gnueabihf/libGLESv2.so.2
+
 
 And now it should link properly.
 
