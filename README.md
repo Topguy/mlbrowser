@@ -19,7 +19,7 @@ Raspbian installed from image or NOOBS.
 *Add the twolife.be repository to you software sources:*
 
 	sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 2578B775
-	sudo bash -c "echo \"deb http://twolife.be/raspbian/ wheezy main backports\" > /etc/apt/sources.list.d/twolife.list
+	sudo bash -c "echo \"deb http://twolife.be/raspbian/ wheezy main backports\" > /etc/apt/sources.list.d/twolife.list"
 
 (You might still get warnings about non-authenticated packages, havent looked into it.)
 
