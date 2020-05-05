@@ -15,6 +15,9 @@
 #include "mlplayer.h"
 #endif
 
+#ifdef _PERSISTENTCOOKIEJAR_
+#include "persistentcookiejar.h"
+#endif
 
 #ifdef QT_OPENGL_LIB
 #undef QT_OPENGL_LIB
@@ -104,6 +107,10 @@ MLWebKit::MLWebKit(int overscanw, int overscanh, qreal zoom, int rotationMode)
     pWebview = new GraphicsWebView();
 
     pPage =  new WebPage();
+
+#ifdef _PERSISTENTCOOKIEJAR_
+    pPage->networkAccessManager()->setCookieJar(new PersistentCookieJar());
+#endif
 
     pFrame = pPage->mainFrame();
 
