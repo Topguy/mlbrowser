@@ -42,7 +42,7 @@ Raspbian installed from image or NOOBS.
 
 	mkdir build
 	cd build
-	qmake DEFINES+=_BROWSER_ DEFINES+=_MOUSE_ DEFINES+=_PROPERTYCHANGER_ ../src/mlbrowser.pro
+	qmake DEFINES+=_BROWSER_ DEFINES+=_MOUSE_ DEFINES+=_PROPERTYCHANGER_ DEFINES+=_PERSISTENTCOOKIEJAR_ ../src/mlbrowser.pro
 
 *build*
 

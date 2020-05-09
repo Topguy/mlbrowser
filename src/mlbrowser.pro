@@ -30,6 +30,11 @@ contains(DEFINES, _KEYFILTER_) {
 	SOURCES += mlkeyfilter.cpp
 }
 
+contains(DEFINES, _PERSISTENTCOOKIEJAR_) {
+	HEADERS += persistentcookiejar.h
+	SOURCES += persistentcookiejar.cpp
+}
+
 contains(DEFINES, _PROPERTYCHANGER_) {
 	HEADERS += mlpropertychanger.h
 	SOURCES += mlpropertychanger.cpp
